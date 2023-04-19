@@ -68,9 +68,7 @@
     <div id="overlay" class="overlay--hidden"></div>
 
     <header class="header">
-      <button class="button button_menu button--menu" id="menu">
-        <img src="./img/burger.svg" alt="открыть главное меню" class="button_image">
-      </button>
+      <button class="button button_menu button--menu" id="menu"></button>
 
       <div class="divider divider--tablet-only"></div>
 
@@ -86,12 +84,9 @@
 
       <div class="divider divider-not-desctop"></div>
 
-      <button class="button header_repair button--repair">
-        <img src="./img/repair.svg" alt="Оставить заявку" class="button_image">
-      </button>
-      <button class="button header_check-status button--check-status">
-        <img src="./img/checkstatus.svg" alt="Проверить статус заявки" class="button_image">
-      </button>
+      <button class="button header_repair button--repair"></button>
+
+      <button class="button header_check-status button--check-status"></button>
     </header>
 
     <main class="main-page">
@@ -464,6 +459,35 @@
           </div>
           <div class="swiper-pagination"></div>
         </div>
+
+        <div class="prices_list">
+          <div class="prices_list-wrapper">
+            <div class="prices_list-headers">
+              <h4 class="prices_title prices_title--list">Ремонтные услуги</h4>
+              <h4 class="prices_title prices_title--list">Цена</h4>
+              <h4 class="prices_title prices_title--list">Время</h4>
+            </div>
+
+            <table class="prices_table">
+              <tr>
+                <td>диагностика</td><td>бесплатно</td><td>30 мин</td><td><button class="button prices_button prices_button--list">заказать</button></td>
+              </tr>
+              <tr>
+                <td>замена дисплея</td><td>1000 &#8381;</td><td>30-120 мин</td><td><button class="button prices_button prices_button--list">заказать</button></td>
+              </tr>
+              <tr>
+                <td>диагностика</td><td>бесплатно</td><td>30 мин</td><td><button class="button prices_button prices_button--list">заказать</button></td>
+              </tr>
+              <tr>
+                <td>тестирование с выдачей технического заключения</td><td>1000 &#8381;</td><td>30-120 мин</td><td><button class="button prices_button prices_button--list">заказать</button></td>
+              </tr>
+              <tr>
+                <td>диагностика</td><td>бесплатно</td><td>30 мин</td><td><button class="button prices_button prices_button--list">заказать</button></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
         <p class="prices_text prices_alert">Все цены указаны с учетом НДС. Стоимость ремонта указана на единичную
           услугу. Для получения коммерческого предложения на постоянное
           обслуживание, оставьте заявку.</p>

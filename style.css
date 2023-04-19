@@ -402,7 +402,7 @@ body {
   font-family: 'TT Lakes';
   font-weight: normal;
   background-color: #f8f8f8;
-  max-width: 1920px;
+  max-width: 1440px;
   margin: 0 auto; }
 
 .item--hidden {
@@ -470,8 +470,8 @@ body {
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
   .button:hover {
-    transition: 0.2s;
-    opacity: 0.8; }
+    transition: 0.1s ease-in;
+    transform: scale(1.05); }
   .button_image {
     width: 100%; }
   .button--closer {
@@ -484,8 +484,12 @@ body {
     background: #ff3e79 url(./static/chat.svg) no-repeat center center; }
   .button--profile {
     background: #ff3e79 url(./static/profile.svg) no-repeat center center; }
+  .button--repair {
+    background: #ff3e79 url(./static/repair.svg) no-repeat center center; }
+  .button--check-status {
+    background: #ff3e79 url(./static/checkstatus.svg) no-repeat center center; }
   .button--menu {
-    background-color: #ff3e79 no-repeat center center; }
+    background: #ff3e79 url(./static/burger.svg) no-repeat center center; }
   .button_menu {
     margin: 0 16px 0 16px; }
 
@@ -515,16 +519,22 @@ body {
   position: fixed;
   top: 0;
   right: -110%;
-  box-shadow: 16px 0px 52px rgba(14, 24, 80, 0.4);
+  box-shadow: 5px 0px 52px rgba(14, 24, 80, 0.4);
   background-color: #ffffff;
   transition: ease-out 0.4s;
   overflow: auto;
   z-index: 4;
   box-sizing: border-box; }
+  .modal::-webkit-scrollbar {
+    display: none; }
   .modal--open {
     right: 0; }
   .modal_button {
     margin: 24px 0 40px 16px; }
+  .modal_button-submit:hover, .modal_button-submit:focus {
+    background-color: white;
+    border: 2px solid #ff3e79;
+    color: #ff3e79; }
   .modal_title {
     margin-bottom: 24px; }
   .modal_input {
@@ -551,14 +561,25 @@ body {
   .modal_button-submit {
     font-family: 'TT Lakes';
     font-weight: 500;
-    width: 136px;
-    height: 32px;
     font-size: 12px;
     border-radius: 16px;
-    margin: 23px 16px 75px auto;
     background-color: #ff3e79;
     color: white;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    width: 136px;
+    height: 32px;
+    margin: 23px 16px 75px auto; }
+  .modal_button-submit::after {
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-bottom: 3px solid;
+    border-right: 3px solid;
+    border-radius: 18%;
+    display: inline-block;
+    margin-left: 10px;
+    transform: rotate(-45deg); }
 
 .repair-item_button {
   position: relative;
@@ -569,23 +590,28 @@ body {
   height: 40px; }
 
 .repair-item_button::before {
-  content: url(./static/dropdown.svg);
-  line-height: 42px;
-  margin-left: 3px; }
+  content: '';
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-bottom: 3px solid;
+  border-right: 3px solid;
+  border-radius: 18%;
+  border-color: #ff3e79;
+  transform: translate(12px, 1px) rotate(-45deg); }
 
 .h3_wrapper {
-  height: 80px;
   background-image: linear-gradient(to right, #f8f8f8, white);
   display: flex;
   align-items: center;
-  margin-bottom: 16px; }
+  margin-bottom: 16px;
+  padding: 16px; }
 
 .h3_title {
   font-weight: 300;
   text-transform: uppercase;
   font-size: 16px;
   line-height: 24px;
-  margin-left: 32px;
   color: #7e7e82;
   vertical-align: middle; }
 
@@ -626,18 +652,35 @@ body {
   color: black; }
 
 .prices_button {
-  width: 119px;
-  height: 32px;
+  font-family: 'TT Lakes';
+  font-weight: 500;
+  font-size: 12px;
+  border-radius: 16px;
   background-color: #ff3e79;
   color: white;
-  font-size: 12px;
-  font-weight: 500;
   text-transform: uppercase;
-  font-family: 'TT Lakes';
-  border-radius: 16px;
+  width: 119px;
+  height: 32px;
   position: absolute;
   right: 16px;
   bottom: 16px; }
+
+.prices_button::after {
+  content: '';
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-bottom: 3px solid;
+  border-right: 3px solid;
+  border-radius: 18%;
+  display: inline-block;
+  margin-left: 10px;
+  transform: rotate(-45deg); }
+
+.prices_button:hover, .prices_button:focus {
+  background-color: white;
+  border: 2px solid #ff3e79;
+  color: #ff3e79; }
 
 .prices_alert {
   margin: 16px 50px 20px 16px;
@@ -654,9 +697,64 @@ body {
   color: black; }
 
 .prices_commercial::after {
-  content: url(./static/dropdown.svg);
-  margin-left: 10px;
-  vertical-align: middle; }
+  content: '';
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-bottom: 3px solid;
+  border-right: 3px solid;
+  border-radius: 18%;
+  transform: rotate(-45deg);
+  border-color: #ff3e79;
+  display: inline-block;
+  margin-left: 5px; }
+
+.prices_table {
+  background-color: white;
+  width: 100%;
+  border-radius: 7px;
+  font-size: 14px; }
+  .prices_table td {
+    position: relative;
+    height: 64px;
+    padding-left: 16px; }
+  .prices_table td:first-child {
+    width: 54%; }
+  .prices_table td:nth-child(2) {
+    width: 12%; }
+  .prices_table tr {
+    position: relative; }
+  .prices_table tr::before {
+    content: '';
+    background-color: #eaeaea;
+    width: 95%;
+    border: 1px solid #eaeaea;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 95%; }
+  .prices_table tr:last-child::before {
+    background-color: white;
+    border-color: white; }
+
+.prices_list-wrapper {
+  width: 94%;
+  margin: 0 auto;
+  margin-bottom: 24px; }
+
+.prices_list-headers {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 16px; }
+
+.prices_title--list:first-child {
+  margin-left: 18px;
+  width: 54%; }
+
+.prices_title--list:nth-child(2) {
+  width: 12%; }
 
 .tech-repair {
   margin-bottom: 32px; }
@@ -758,7 +856,8 @@ body {
   font-size: 16px;
   background-color: #f8f8f8;
   color: #7e7e82;
-  border: 2px solid #f8f8f8; }
+  border: 2px solid #f8f8f8;
+  transition: 0.1s ease-in; }
 
 .main-page_nav-button:focus {
   background-color: #ffffff;
@@ -807,7 +906,7 @@ body {
 .side-menu {
   min-width: 320px;
   max-width: 425px;
-  width: 100%;
+  height: 100%;
   min-height: 100vh;
   position: fixed;
   overflow: auto;
@@ -826,7 +925,6 @@ body {
     flex-direction: column;
     justify-content: space-between;
     max-height: 1024px;
-    position: fixed;
     width: 100%;
     overflow: auto; }
   .side-menu_side-header {
@@ -856,15 +954,22 @@ body {
     .side-menu_nav-item .nav-item_link::before {
       content: '';
       position: absolute;
-      left: -5px;
-      height: 1.25em;
-      border: 3px solid #41f6d7;
+      border: 3px solid inherit;
+      background-color: inherit;
       border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px; }
+      border-bottom-right-radius: 5px;
+      left: 0;
+      transition: 0.05s ease; }
     .side-menu_nav-item .nav-item_link:hover::before,
     .side-menu_nav-item .nav-item_link:focus::before {
-      left: 0;
-      transition: ease-in-out 0.3s; }
+      content: '';
+      position: absolute;
+      height: 1.25em;
+      border: 3px solid #41f6d7;
+      background-color: #41f6d7;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      left: 0; }
     .side-menu_nav-item .nav-item_link:hover,
     .side-menu_nav-item .nav-item_link:focus {
       color: #7e7e82;
@@ -913,7 +1018,7 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 130px;
-  margin-bottom: 19px; }
+  padding: 19px; }
   .footer_confidence, .footer_copyright, .footer_rights {
     color: #7e7e82;
     font-size: 14px;
@@ -961,12 +1066,24 @@ body {
   .tech-repair_read-more {
     margin-left: 26px;
     margin-top: 20px;
-    display: block; } }
+    display: block; }
+  .footer {
+    flex-direction: row;
+    align-items: flex-start;
+    height: auto; }
+    .footer_rights {
+      width: 30%;
+      text-align: right; }
+    .footer_copyright {
+      -moz-text-align-last: left;
+           text-align-last: left; } }
 
 @media (min-width: 1366px) {
   body {
     display: flex;
     position: relative; }
+  #overlay {
+    z-index: 4; }
   .header {
     position: absolute;
     top: -100px; }
@@ -994,13 +1111,16 @@ body {
       font-family: 'TT Lakes';
       font-size: 16px;
       font-weight: 500; }
-  .main-page_title {
-    margin-top: 42px; }
-  .main-page_nav {
-    flex-wrap: wrap; }
+  .main-page {
+    min-width: 0; }
+    .main-page_title {
+      margin-top: 42px; }
+    .main-page_nav {
+      flex-wrap: wrap; }
   .side-menu {
     position: static;
-    box-shadow: none; }
+    box-shadow: none;
+    height: auto; }
     .side-menu .button--closer {
       display: none; }
   .brends-repair_list,
